@@ -37,7 +37,7 @@ export default function AuthScreen({ onLogin, onSignUp, error }) {
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         >
           <img 
-            src="/escanor.png" 
+            src="/escanor.jpeg" 
             alt="Escanor Tema" 
             className="w-24 h-24 object-cover rounded-full border-2 border-neon-500" 
           />
