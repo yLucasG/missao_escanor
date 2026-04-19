@@ -137,7 +137,7 @@ export default function App() {
       <div className="fixed inset-0 z-0 bg-void-950">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-fixed bg-no-repeat opacity-20 mix-blend-luminosity"
-          style={{ backgroundImage: 'url("/image_3.png")' }}
+          style={{ backgroundImage: 'url("/escanor.jpeg")' }}
         />
         <div className="absolute inset-0 bg-gradient-to-br from-void-900/90 via-void-950/95 to-void-900/90 mix-blend-multiply" />
         <div className="absolute inset-0 bg-purple-900/10 pointer-events-none" />

@@ -32,14 +32,14 @@ export default function AuthScreen({ onLogin, onSignUp, error }) {
         className="relative z-10 w-full max-w-md bg-void-900/80 border border-neon-900/50 rounded-3xl p-8 backdrop-blur-xl shadow-[0_10px_50px_rgba(107,33,168,0.3)]"
       >
         <motion.div 
-          className="flex justify-center mb-6"
+          className="flex justify-center mb-6 bg-transparent"
           animate={{ y: [-5, 5, -5], filter: ["drop-shadow(0px 0px 10px #A855F7)", "drop-shadow(0px 0px 25px #A855F7)", "drop-shadow(0px 0px 10px #A855F7)"] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         >
           <img 
-            src="/image_10.png" 
+            src="/escanor.jpeg" 
             alt="Escanor Silhouette" 
-            className="h-44 w-auto object-contain" 
+            className="h-44 w-auto object-contain bg-transparent border-none" 
           />
         </motion.div>
 
