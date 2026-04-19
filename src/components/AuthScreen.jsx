@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShieldAlert, Sun, Lock, User, Axe } from "lucide-react";
 
-export default function AuthScreen({ onLogin, onSignUp, error }) {
+export default function AuthScreen({ onLogin, onSignUp, error, onBack }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -31,6 +31,16 @@ export default function AuthScreen({ onLogin, onSignUp, error }) {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="relative z-10 w-full max-w-md bg-void-900/80 border border-neon-900/50 rounded-3xl p-8 backdrop-blur-xl shadow-[0_10px_50px_rgba(107,33,168,0.3)]"
       >
+        {onBack && (
+          <button 
+            type="button"
+            onClick={onBack}
+            className="absolute top-4 left-4 text-neon-400 hover:text-white transition-colors flex items-center gap-1 text-xs uppercase tracking-widest font-bold z-20"
+          >
+            ← Voltar
+          </button>
+        )}
+        
         <motion.div 
           className="flex justify-center mb-6 bg-transparent"
           animate={{ y: [-5, 5, -5], filter: ["drop-shadow(0px 0px 10px #A855F7)", "drop-shadow(0px 0px 25px #A855F7)", "drop-shadow(0px 0px 10px #A855F7)"] }}

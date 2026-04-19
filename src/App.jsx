@@ -6,6 +6,7 @@ import CategoryBoard from "./components/CategoryBoard";
 import CategoryStats from "./components/CategoryStats";
 import NightAudit from "./components/NightAudit";
 import AuthScreen from "./components/AuthScreen";
+import LandingScreen from "./components/LandingScreen";
 import { challengeDays } from "./data/challengeData";
 import { useSupabase } from "./hooks/useSupabase";
 
@@ -17,6 +18,9 @@ export default function App() {
   const [dataLoading, setDataLoading] = useState(false);
   const [escanorEffect, setEscanorEffect] = useState(false);
   const [dayAdvanceAnim, setDayAdvanceAnim] = useState(false);
+  const [showAuth, setShowAuth] = useState(false);
+  
+  const checkoutURL = "YOUR_KIWIFY_URL_HERE"; // Placeholder for Kiwify link
 
   // Load user data upon login
   useEffect(() => {
@@ -193,7 +197,11 @@ export default function App() {
       </AnimatePresence>
 
       {!session ? (
-        <AuthScreen onLogin={login} onSignUp={signUp} />
+        showAuth ? (
+          <AuthScreen onLogin={login} onSignUp={signUp} onBack={() => setShowAuth(false)} />
+        ) : (
+          <LandingScreen onLoginClick={() => setShowAuth(true)} checkoutURL={checkoutURL} />
+        )
       ) : (
         <div className="relative z-10">
           
