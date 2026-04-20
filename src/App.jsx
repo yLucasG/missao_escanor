@@ -7,6 +7,7 @@ import CategoryStats from "./components/CategoryStats";
 import NightAudit from "./components/NightAudit";
 import AuthScreen from "./components/AuthScreen";
 import LandingScreen from "./components/LandingScreen";
+import SuccessScreen from "./components/SuccessScreen";
 import { challengeDays } from "./data/challengeData";
 import { useSupabase } from "./hooks/useSupabase";
 
@@ -19,6 +20,13 @@ export default function App() {
   const [escanorEffect, setEscanorEffect] = useState(false);
   const [dayAdvanceAnim, setDayAdvanceAnim] = useState(false);
   const [showAuth, setShowAuth] = useState(false);
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  
+  useEffect(() => {
+    const handleLocationChange = () => setCurrentPath(window.location.pathname);
+    window.addEventListener('popstate', handleLocationChange);
+    return () => window.removeEventListener('popstate', handleLocationChange);
+  }, []);
   
   const checkoutURL = "https://pay.kiwify.com.br/ZHnddb8";
 
@@ -197,7 +205,13 @@ export default function App() {
       </AnimatePresence>
 
       {!session ? (
-        showAuth ? (
+        currentPath === '/sucesso' || currentPath === '/obrigado' ? (
+          <SuccessScreen onLoginClick={() => {
+            window.history.pushState({}, '', '/');
+            setCurrentPath('/');
+            setShowAuth(true);
+          }} />
+        ) : showAuth ? (
           <AuthScreen onLogin={login} onSignUp={signUp} onBack={() => setShowAuth(false)} />
         ) : (
           <LandingScreen onLoginClick={() => setShowAuth(true)} checkoutURL={checkoutURL} />
