@@ -37,17 +37,19 @@ export default function LandingScreen({ onLoginClick, checkoutURL }) {
             
             <div className="text-neon-400 text-sm uppercase tracking-widest font-bold mb-2">Acesso Imediato</div>
             <div className="text-5xl font-black text-white drop-shadow-[0_0_10px_rgba(168,85,247,0.8)] mb-6 flex items-start gap-1">
-              <span className="text-2xl mt-1 text-neon-300">R$</span> 19,90
+              <span className="text-2xl mt-1 text-neon-300">R$</span> 29,90
             </div>
 
             <motion.a
               href={checkoutURL}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full relative bg-neon-600 text-white font-black uppercase tracking-widest py-4 px-6 rounded-xl flex items-center justify-center gap-2 overflow-hidden shadow-[0_0_20px_rgba(168,85,247,0.6)] hover:shadow-[0_0_40px_rgba(168,85,247,0.9)] transition-all"
+              className="w-full relative bg-neon-600 text-white font-black uppercase tracking-widest py-4 px-6 rounded-xl flex items-center justify-center gap-2 overflow-hidden shadow-[0_0_30px_rgba(168,85,247,0.9)] hover:shadow-[0_0_60px_rgba(168,85,247,1)] transition-all animate-pulse"
             >
               <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
-              ASSUMIR SUA EVOLUÇÃO AGORA <ChevronRight className="w-5 h-5" />
+              ASSUMIR O COMANDO AGORA <ChevronRight className="w-5 h-5" />
             </motion.a>
           </div>
 

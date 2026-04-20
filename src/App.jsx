@@ -20,7 +20,7 @@ export default function App() {
   const [dayAdvanceAnim, setDayAdvanceAnim] = useState(false);
   const [showAuth, setShowAuth] = useState(false);
   
-  const checkoutURL = "YOUR_KIWIFY_URL_HERE"; // Placeholder for Kiwify link
+  const checkoutURL = "https://pay.kiwify.com.br/ZHnddb8";
 
   // Load user data upon login
   useEffect(() => {
