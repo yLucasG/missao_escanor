@@ -62,7 +62,14 @@ export function useSupabase() {
         .eq("user_id", userId)
         .single();
 
-      if (error) throw error;
+      if (error) {
+        // PGRST116 significa que a linha não existe (o usuário ainda não tem progresso salvo).
+        // Isso é normal para novos usuários, retornamos o estado zerado ao invés de erro.
+        if (error.code === 'PGRST116') {
+          return { tasks: {}, audits: {}, currentDay: 1, points: 0 };
+        }
+        throw error;
+      }
 
       return {
         tasks: data.completed_task_ids || {},
@@ -71,8 +78,9 @@ export function useSupabase() {
         points: data.total_points || 0
       };
     } catch (err) {
-      console.warn("Using mock state (Supabase table may not exist yet):", err);
-      return mockState;
+      console.error("Erro ao buscar progresso (Tabela pode não existir):", err.message || err);
+      // Fallback de segurança para não quebrar a UI
+      return { tasks: {}, audits: {}, currentDay: 1, points: 0 };
     }
   };
 
