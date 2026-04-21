@@ -21,13 +21,13 @@ export default function App() {
   const [dayAdvanceAnim, setDayAdvanceAnim] = useState(false);
   const [showAuth, setShowAuth] = useState(false);
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
-  
+
   useEffect(() => {
     const handleLocationChange = () => setCurrentPath(window.location.pathname);
     window.addEventListener('popstate', handleLocationChange);
     return () => window.removeEventListener('popstate', handleLocationChange);
   }, []);
-  
+
   const checkoutURL = "https://pay.kiwify.com.br/ZHnddb8";
 
   // Load user data upon login
@@ -103,10 +103,10 @@ export default function App() {
       let totalTasks = 0;
       let done = 0;
       Object.values(cd.categories).forEach(cat => {
-         totalTasks += cat.tasks.length;
-         cat.tasks.forEach(t => {
-            if (state.tasks[`${cd.day}-${t.id}`]) done++;
-         });
+        totalTasks += cat.tasks.length;
+        cat.tasks.forEach(t => {
+          if (state.tasks[`${cd.day}-${t.id}`]) done++;
+        });
       });
       map[cd.day] = totalTasks > 0 ? (done / totalTasks) * 100 : 0;
     });
@@ -126,7 +126,7 @@ export default function App() {
         setSelectedDay(nextDay);
         setDayAdvanceAnim(false);
         if (session?.user) {
-           syncProgress(session.user.id, newState);
+          syncProgress(session.user.id, newState);
         }
       }, 2000);
       return () => clearTimeout(timer);
@@ -147,10 +147,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen relative font-sans text-neon-100 selection:bg-neon-500/30 overflow-x-hidden">
-      
+
       {/* EPIC NEON PURPLE PARALLAX */}
       <div className="fixed inset-0 z-0 bg-void-950">
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-fixed bg-no-repeat opacity-20 mix-blend-luminosity"
           style={{ backgroundImage: 'url("/escanor.png")' }}
         />
@@ -160,27 +160,27 @@ export default function App() {
 
       {/* AUTO-ADVANCE ANIMATION OVERLAY */}
       <AnimatePresence>
-         {dayAdvanceAnim && (
-           <motion.div 
-             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-             className="fixed inset-0 z-[60] flex items-center justify-center bg-void-950/80 backdrop-blur-sm pointer-events-none"
-           >
-              <motion.div 
-                 initial={{ scale: 0.5, y: 50 }} 
-                 animate={{ scale: 1, y: 0 }} 
-                 className="text-center font-black text-neon-300 drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]"
-              >
-                  <h2 className="text-4xl uppercase tracking-widest mb-2">Dia Concluído</h2>
-                  <p className="text-neon-400 font-bold opacity-80">Avançando para o próximo alvo...</p>
-              </motion.div>
-           </motion.div>
-         )}
+        {dayAdvanceAnim && (
+          <motion.div
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-void-950/80 backdrop-blur-sm pointer-events-none"
+          >
+            <motion.div
+              initial={{ scale: 0.5, y: 50 }}
+              animate={{ scale: 1, y: 0 }}
+              className="text-center font-black text-neon-300 drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]"
+            >
+              <h2 className="text-4xl uppercase tracking-widest mb-2">Dia Concluído</h2>
+              <p className="text-neon-400 font-bold opacity-80">Avançando para o próximo alvo...</p>
+            </motion.div>
+          </motion.div>
+        )}
       </AnimatePresence>
 
       {/* ESCANOR QUEM DECIDIU ISSO EFFECT (NEON) */}
       <AnimatePresence>
         {escanorEffect && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 1.1 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
@@ -188,16 +188,16 @@ export default function App() {
             className="fixed inset-0 z-[100] flex flex-col items-center justify-center pointer-events-none"
           >
             <div className="absolute inset-0 bg-gradient-to-t from-neon-800/80 to-transparent mix-blend-overlay" />
-            <motion.h1 
-               initial={{ opacity: 0, y: 50 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ delay: 0.5, type: "spring" }}
-               className="text-5xl sm:text-7xl md:text-9xl font-black text-white text-center drop-shadow-[0_10px_30px_rgba(168,85,247,0.8)] leading-none uppercase"
-               style={{ WebkitTextStroke: "2px #A855F7" }}
+            <motion.h1
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, type: "spring" }}
+              className="text-5xl sm:text-7xl md:text-9xl font-black text-white text-center drop-shadow-[0_10px_30px_rgba(168,85,247,0.8)] leading-none uppercase"
+              style={{ WebkitTextStroke: "2px #A855F7" }}
             >
-              Quem<br/>decidiu<br/>isso?
+              Quem<br />decidiu<br />isso?
             </motion.h1>
-            <motion.div 
+            <motion.div
               initial={{ scale: 0, opacity: 0 }}
               animate={{ scale: [1, 2, 4], opacity: [0, 0.4, 0] }}
               transition={{ duration: 2, ease: "easeOut" }}
@@ -221,31 +221,31 @@ export default function App() {
         )
       ) : (
         <div className="relative z-10">
-          
+
           {/* CABEÇALHO (HUD NEON) */}
           <div className="w-full bg-void-950/80 border-b border-neon-900/50 backdrop-blur-xl sticky top-0 z-50 shadow-[0_5px_15px_rgba(0,0,0,0.5)]">
             <div className="max-w-6xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-2">
                 <Shield className="w-5 h-5 text-neon-500 drop-shadow-[0_0_8px_rgba(168,85,247,0.6)]" />
                 <h1 className="text-sm sm:text-base font-black tracking-widest uppercase text-neon-100">
-                  Comandante: <span className="text-neon-400 drop-shadow-sm">{displayName}</span>
+                  <span className="text-neon-400 drop-shadow-sm">{displayName}</span>
                 </h1>
               </div>
 
               <div className="flex items-center gap-4 sm:gap-6 bg-void-900 border border-neon-800/80 rounded-lg px-4 py-1.5 shadow-inner text-xs sm:text-sm font-bold uppercase tracking-wider">
-                 <div className="text-neon-300">Dia: <span className="text-neon-500 font-black">{state.currentDay}/30</span></div>
-                 <div className="w-px h-4 bg-neon-800" />
-                 <div className="text-neon-300">Nível: <span className="text-neon-500 font-black">{getRank(state.points)}</span></div>
-                 <div className="w-px h-4 bg-neon-800" />
-                 <div className="text-neon-300">Pontos: <span className="text-neon-500 font-black">{state.points}</span></div>
+                <div className="text-neon-300">Dia: <span className="text-neon-500 font-black">{state.currentDay}/30</span></div>
+                <div className="w-px h-4 bg-neon-800" />
+                <div className="text-neon-300">Nível: <span className="text-neon-500 font-black">{getRank(state.points)}</span></div>
+                <div className="w-px h-4 bg-neon-800" />
+                <div className="text-neon-300">Pontos: <span className="text-neon-500 font-black">{state.points}</span></div>
               </div>
 
-              <button 
-                onClick={logout} 
+              <button
+                onClick={logout}
                 className="text-xs text-neon-100 hover:text-white uppercase tracking-widest font-bold bg-void-800 hover:bg-neon-600 px-4 py-1.5 rounded-full border border-neon-700 transition-colors shadow-sm"
-               >
+              >
                 Sair
-               </button>
+              </button>
             </div>
           </div>
 
@@ -259,9 +259,9 @@ export default function App() {
           </div>
 
           {dataLoading ? (
-             <div className="flex justify-center py-20">
-               <div className="w-12 h-12 border-4 border-neon-800 border-t-neon-500 rounded-full animate-spin" />
-             </div>
+            <div className="flex justify-center py-20">
+              <div className="w-12 h-12 border-4 border-neon-800 border-t-neon-500 rounded-full animate-spin" />
+            </div>
           ) : (
             <main className="max-w-6xl mx-auto px-4 pb-12">
               <AnimatePresence mode="wait">
@@ -275,11 +275,11 @@ export default function App() {
                   <CategoryStats stateTasks={state.tasks} />
 
                   {selectedDayData && (
-                    <CategoryBoard 
-                       categories={selectedDayData.categories}
-                       stateTasks={state.tasks}
-                       handleToggleTask={handleToggleTask}
-                       selectedDay={selectedDay}
+                    <CategoryBoard
+                      categories={selectedDayData.categories}
+                      stateTasks={state.tasks}
+                      handleToggleTask={handleToggleTask}
+                      selectedDay={selectedDay}
                     />
                   )}
                 </motion.div>
