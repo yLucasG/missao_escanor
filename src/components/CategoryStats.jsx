@@ -51,12 +51,10 @@ export default function CategoryStats({ stateTasks }) {
                  <span className={`text-2xl font-black text-white drop-shadow-md`}>{s.current}</span>
                  <span className={`text-xs mb-1 opacity-70 ${s.color}`}>/ {s.max} PTS</span>
                </div>
-               <div className="h-1.5 w-full bg-black/60 rounded-full overflow-hidden border border-void-800">
-                 <motion.div 
-                   className={`h-full ${s.color.replace('text', 'bg')} shadow-[0_0_10px_currentColor]`}
-                   initial={{ width: 0 }}
-                   animate={{ width: `${percent}%` }}
-                   transition={{ duration: 1 }}
+               <div className="w-full h-2 bg-gray-800 rounded-full overflow-hidden mt-2">
+                 <div 
+                   className="bg-orange-500 shadow-[0_0_10px_#f97316] h-full rounded-full transition-all duration-500 ease-out"
+                   style={{ width: `${percent}%` }}
                  />
                </div>
             </div>
