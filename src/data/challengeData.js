@@ -3,41 +3,41 @@ const rawData = [
     tasks: [
       { category: "PHYSICAL TRAINING", label: "Rotina Inegociável: 3 séries de flexões + 3 agachamentos." },
       { category: "CORRIDA (Rumo aos 80km)", label: "5 km fraco." },
-      { category: "MINDSET", label: "Âncora de Poder: Ouvir The Batman - Michael Giacchino.", link: "https://www.youtube.com/watch?v=07M6n8_NfT0" },
-      { category: "PERSUASÃO", label: "Definir o Problema Único do seu sistema." }
+      { category: "MINDSET", label: "A Quebra do Ritmo Hipnótico: Identifique seu maior 'ralo de tempo' (ex: rolar o feed). Ao entrar nesse transe, levante imediatamente e faça 10 flexões ou beba água. Quebre o padrão físico. (Origem: Napoleon Hill)", pointsOverride: 20 },
+      { category: "PERSUASÃO", label: "O Espelho Inconsciente: Em sua próxima interação importante, adote sutilmente a mesma postura corporal, tom de voz e velocidade de fala do interlocutor por 90s. (Origem: Nicholas Boothman)", pointsOverride: 15 }
     ]
   },
   { day: 2, 
     tasks: [
       { category: "PHYSICAL TRAINING", label: "Treino de Pescoço e Trapézio." },
       { category: "CORRIDA (Rumo aos 80km)", label: "DESCANSO ATIVO: Alongamento e Mobilidade (0km)." },
-      { category: "PERSUASÃO", label: "Usar o Gancho: 'Você tem energia de quem tá no controle...'." }
+      { category: "PERSUASÃO", label: "O Silêncio Tático: Ao fazer uma oferta, propor um preço ou pergunta difícil, feche a boca. Silêncio absoluto. Deixe a outra pessoa preencher o vazio. (Origem: As 48 Leis do Poder)", pointsOverride: 20 }
     ]
   },
   { day: 3, 
     tasks: [
       { category: "PHYSICAL TRAINING", label: "Rotina Inegociável: 3 séries de flexões." },
       { category: "CORRIDA (Rumo aos 80km)", label: "10 tiros de 400m (4 km total)." },
-      { category: "PERSUASÃO", label: "Pitch de Elevador do seu sistema de organização." }
+      { category: "PERSUASÃO", label: "O Gatilho da Reciprocidade Invisível: Entregue um valor genuíno e não solicitado hoje a um prospecto/parceiro (artigo, dica, contato), sem pedir NADA em troca. (Origem: Robert Cialdini)", pointsOverride: 15 }
     ]
   },
   { day: 4, 
     tasks: [
       { category: "PHYSICAL TRAINING", label: "Treino focado em Ombros (Deltoides)." },
       { category: "CORRIDA (Rumo aos 80km)", label: "DESCANSO ATIVO (0km)." },
-      { category: "MINDSET", label: "Sustentar contato visual o dia todo." }
+      { category: "MINDSET", label: "A Regra dos 2 Minutos: Escolha a tarefa que mais procrastina hoje. Não a termine, execute-a por exatos 2 minutos para vencer a inércia. (Origem: James Clear)", pointsOverride: 10 }
     ]
   },
   { day: 5, 
     tasks: [
       { category: "PHYSICAL TRAINING", label: "Rotina Inegociável." },
       { category: "CORRIDA (Rumo aos 80km)", label: "7 km forte." },
-      { category: "PERSUASÃO", label: "Gancho de Curiosidade sobre ambição." }
+      { category: "PERSUASÃO", label: "A Ilusão da Escassez: Ao agendar reunião, nunca diga 'estou livre'. Dê apenas 2 opções restritas de horário e mencione que a agenda quase fechou. (Origem: Robert Cialdini)", pointsOverride: 20 }
     ]
   },
   { day: 6, 
     tasks: [
-      { category: "MINDSET", label: "Escuta Ativa: repetir as 3 últimas palavras." },
+      { category: "MINDSET", label: "O Empilhamento Tático: Ancore um novo micro-hábito a uma ação do piloto automático. (Ex: 'Após o café preto, leio 3 páginas de negócios imediatamente'). (Origem: James Clear)", pointsOverride: 15 },
       { category: "CORRIDA (Rumo aos 80km)", label: "DESCANSO ATIVO (0km)." }
     ]
   },
@@ -45,7 +45,7 @@ const rawData = [
     tasks: [
       { category: "PHYSICAL TRAINING", label: "Rotina Inegociável." },
       { category: "CORRIDA (Rumo aos 80km)", label: "10 tiros de 400m (4 km total)." },
-      { category: "PERSUASÃO", label: "Técnica Push-Pull com elogio/provocação." }
+      { category: "PERSUASÃO", label: "O Foco no Alvo: Em conversa de 10 min, faça a outra pessoa falar 80% do tempo sobre suas paixões. Faça o outro se sentir o centro do mundo. (Origem: Robert Greene)", pointsOverride: 15 }
     ]
   },
   { day: 8, 
@@ -63,7 +63,7 @@ const rawData = [
   },
   { day: 10, 
     tasks: [
-      { category: "MINDSET", label: "Espelhamento Reverso de ritmo." },
+      { category: "MINDSET", label: "O Propósito Definido: Escreva no papel seu único objetivo principal para os próximos 6 meses. Leia em voz alta no espelho. Recuse-se a derivar. (Origem: Napoleon Hill)", pointsOverride: 20 },
       { category: "CORRIDA (Rumo aos 80km)", label: "DESCANSO ATIVO (0km)." }
     ]
   },
@@ -76,7 +76,7 @@ const rawData = [
   },
   { day: 12, 
     tasks: [
-      { category: "MINDSET", label: "Visualização do Império (Ouvir Till I Collapse)." },
+      { category: "MINDSET", label: "O Controle da Reatividade: Se algo der errado ou alguém provocar, PROIBIDO reagir logo. Aplique a Pausa de 5 Segs, respire, e responda com frieza. (Origem: As 48 Leis do Poder)", pointsOverride: 15 },
       { category: "CORRIDA (Rumo aos 80km)", label: "DESCANSO ATIVO (0km)." }
     ]
   },
@@ -202,7 +202,7 @@ export const challengeDays = rawData.map((data) => {
   const categoriesMap = {
     "PHYSICAL TRAINING": { key: "physical", title: "TREINAMENTO FÍSICO", points: 10 },
     "CORRIDA (Rumo aos 80km)": { key: "running", title: "CORRIDA (RUMO AOS 80KM)", points: 20 },
-    "MINDSET": { key: "mindset", title: "MENTALIDADE & PNL", points: 10 },
+    "MINDSET": { key: "mindset", title: "MENTALIDADE DE ELITE", points: 10 },
     "PERSUASÃO": { key: "sales", title: "VENDAS & PERSUASÃO", points: 10 },
     "O ÁPICE SOLAR": { key: "apice", title: "O ÁPICE SOLAR", points: 100 }
   };
