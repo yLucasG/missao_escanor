@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, Settings as SettingsIcon } from "lucide-react";
+import { Shield, Settings as SettingsIcon, BookMarked } from "lucide-react";
 import DaySelector from "./components/DaySelector";
 import CategoryBoard from "./components/CategoryBoard";
 import CategoryStats from "./components/CategoryStats";
@@ -9,6 +9,7 @@ import AuthScreen from "./components/AuthScreen";
 import LandingScreen from "./components/LandingScreen";
 import SuccessScreen from "./components/SuccessScreen";
 import Settings from "./components/Settings";
+import Arsenal from "./components/Arsenal";
 import { challengeDays } from "./data/challengeData";
 import { useSupabase } from "./hooks/useSupabase";
 
@@ -244,6 +245,16 @@ export default function App() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => {
+                    window.history.pushState({}, '', '/arsenal');
+                    setCurrentPath('/arsenal');
+                  }}
+                  className="p-1.5 text-orange-400 hover:text-white bg-void-800 hover:bg-orange-600 rounded-full border border-orange-800 hover:border-orange-500 transition-all shadow-[0_0_10px_rgba(249,115,22,0.2)]"
+                  title="Arsenal"
+                >
+                  <BookMarked className="w-4 h-4 sm:w-5 sm:h-5" />
+                </button>
+                <button
+                  onClick={() => {
                     window.history.pushState({}, '', '/configuracoes');
                     setCurrentPath('/configuracoes');
                   }}
@@ -262,7 +273,7 @@ export default function App() {
             </div>
           </div>
 
-          {currentPath !== '/configuracoes' && (
+          {currentPath !== '/configuracoes' && currentPath !== '/arsenal' && (
             <div className="pt-6">
               <DaySelector
                 currentDay={state.currentDay}
@@ -280,6 +291,13 @@ export default function App() {
           ) : currentPath === '/configuracoes' ? (
             <main className="max-w-6xl mx-auto px-4 pb-12 pt-8">
               <Settings onBack={() => {
+                window.history.pushState({}, '', '/');
+                setCurrentPath('/');
+              }} />
+            </main>
+          ) : currentPath === '/arsenal' ? (
+            <main className="max-w-6xl mx-auto px-4 pb-12 pt-8">
+              <Arsenal onBack={() => {
                 window.history.pushState({}, '', '/');
                 setCurrentPath('/');
               }} />
@@ -309,7 +327,7 @@ export default function App() {
             </main>
           )}
 
-          {!dataLoading && currentPath !== '/configuracoes' && (
+          {!dataLoading && currentPath !== '/configuracoes' && currentPath !== '/arsenal' && (
             <div className="bg-void-950/90 backdrop-blur-lg border-t border-neon-900/50 w-full relative z-20 pb-4 shadow-[0_-10px_20px_rgba(0,0,0,0.5)]">
               <NightAudit
                 selectedDay={selectedDay}
