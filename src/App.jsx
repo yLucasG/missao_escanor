@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield } from "lucide-react";
+import { Shield, Settings as SettingsIcon } from "lucide-react";
 import DaySelector from "./components/DaySelector";
 import CategoryBoard from "./components/CategoryBoard";
 import CategoryStats from "./components/CategoryStats";
@@ -8,6 +8,7 @@ import NightAudit from "./components/NightAudit";
 import AuthScreen from "./components/AuthScreen";
 import LandingScreen from "./components/LandingScreen";
 import SuccessScreen from "./components/SuccessScreen";
+import Settings from "./components/Settings";
 import { challengeDays } from "./data/challengeData";
 import { useSupabase } from "./hooks/useSupabase";
 
@@ -240,28 +241,49 @@ export default function App() {
                 <div className="text-neon-300">Pontos: <span className="text-neon-500 font-black">{state.points}</span></div>
               </div>
 
-              <button
-                onClick={logout}
-                className="text-xs text-neon-100 hover:text-white uppercase tracking-widest font-bold bg-void-800 hover:bg-neon-600 px-4 py-1.5 rounded-full border border-neon-700 transition-colors shadow-sm"
-              >
-                Sair
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => {
+                    window.history.pushState({}, '', '/configuracoes');
+                    setCurrentPath('/configuracoes');
+                  }}
+                  className="p-1.5 text-neon-400 hover:text-white bg-void-800 hover:bg-neon-600 rounded-full border border-neon-800 hover:border-neon-500 transition-all shadow-[0_0_10px_rgba(168,85,247,0.2)]"
+                  title="Configurações"
+                >
+                  <SettingsIcon className="w-4 h-4 sm:w-5 sm:h-5" />
+                </button>
+                <button
+                  onClick={logout}
+                  className="text-xs text-neon-100 hover:text-white uppercase tracking-widest font-bold bg-void-800 hover:bg-neon-600 px-4 py-1.5 rounded-full border border-neon-700 transition-colors shadow-sm"
+                >
+                  Sair
+                </button>
+              </div>
             </div>
           </div>
 
-          <div className="pt-6">
-            <DaySelector
-              currentDay={state.currentDay}
-              selectedDay={selectedDay}
-              onSelect={setSelectedDay}
-              dayCompletion={dayCompletion}
-            />
-          </div>
+          {currentPath !== '/configuracoes' && (
+            <div className="pt-6">
+              <DaySelector
+                currentDay={state.currentDay}
+                selectedDay={selectedDay}
+                onSelect={setSelectedDay}
+                dayCompletion={dayCompletion}
+              />
+            </div>
+          )}
 
           {dataLoading ? (
             <div className="flex justify-center py-20">
               <div className="w-12 h-12 border-4 border-neon-800 border-t-neon-500 rounded-full animate-spin" />
             </div>
+          ) : currentPath === '/configuracoes' ? (
+            <main className="max-w-6xl mx-auto px-4 pb-12 pt-8">
+              <Settings onBack={() => {
+                window.history.pushState({}, '', '/');
+                setCurrentPath('/');
+              }} />
+            </main>
           ) : (
             <main className="max-w-6xl mx-auto px-4 pb-12">
               <AnimatePresence mode="wait">
@@ -287,7 +309,7 @@ export default function App() {
             </main>
           )}
 
-          {!dataLoading && (
+          {!dataLoading && currentPath !== '/configuracoes' && (
             <div className="bg-void-950/90 backdrop-blur-lg border-t border-neon-900/50 w-full relative z-20 pb-4 shadow-[0_-10px_20px_rgba(0,0,0,0.5)]">
               <NightAudit
                 selectedDay={selectedDay}
