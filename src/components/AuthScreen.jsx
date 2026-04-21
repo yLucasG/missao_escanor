@@ -32,7 +32,7 @@ export default function AuthScreen({ onLogin, onSignUp, error, onBack }) {
         className="relative z-10 w-full max-w-md bg-void-900/80 border border-neon-900/50 rounded-3xl p-8 backdrop-blur-xl shadow-[0_10px_50px_rgba(107,33,168,0.3)]"
       >
         {onBack && (
-          <button 
+          <button
             type="button"
             onClick={onBack}
             className="absolute top-4 left-4 text-neon-400 hover:text-white transition-colors flex items-center gap-1 text-xs uppercase tracking-widest font-bold z-20"
@@ -40,25 +40,25 @@ export default function AuthScreen({ onLogin, onSignUp, error, onBack }) {
             ← Voltar
           </button>
         )}
-        
-        <motion.div 
+
+        <motion.div
           className="flex justify-center mb-6 bg-transparent"
           animate={{ y: [-5, 5, -5], filter: ["drop-shadow(0px 0px 10px #A855F7)", "drop-shadow(0px 0px 25px #A855F7)", "drop-shadow(0px 0px 10px #A855F7)"] }}
           transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         >
-          <img 
-            src="/escanor.png" 
-            alt="Escanor Silhouette" 
-            className="h-44 w-auto object-contain bg-transparent border-none" 
+          <img
+            src="/escanor.png"
+            alt="Escanor Silhouette"
+            className="h-44 w-auto object-contain bg-transparent border-none"
           />
         </motion.div>
 
         <div className="text-center mb-8 flex flex-col items-center justify-center">
           <div className="flex items-center gap-3">
-             <h1 className="text-3xl font-black tracking-[0.1em] uppercase text-neon-100 drop-shadow-sm">
-               MISSÃO ESCANOR
-             </h1>
-             <Axe className="w-8 h-8 text-neon-500 drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
+            <h1 className="text-3xl font-black tracking-[0.1em] uppercase text-neon-100 drop-shadow-sm">
+              MISSÃO ESCANOR
+            </h1>
+            <Axe className="w-8 h-8 text-neon-500 drop-shadow-[0_0_8px_rgba(168,85,247,0.8)]" />
           </div>
         </div>
 
@@ -148,7 +148,7 @@ export default function AuthScreen({ onLogin, onSignUp, error, onBack }) {
           </motion.button>
         </form>
 
-        <div className="mt-6 text-center">
+        {/* <div className="mt-6 text-center">
           <button
             type="button"
             onClick={() => setIsLogin(!isLogin)}
@@ -158,7 +158,7 @@ export default function AuthScreen({ onLogin, onSignUp, error, onBack }) {
               ? "Ainda não decidiu? Inicie aqui."
               : "Já possui o código? Faça Login."}
           </button>
-        </div>
+        </div> */}
       </motion.div>
     </div>
   );
