@@ -2,19 +2,14 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { BookOpen, Save, Check } from "lucide-react";
 
-export default function NightAudit({ selectedDay, audit, onSave }) {
-  const [text, setText] = useState(audit || "");
+export default function NightAudit({ selectedDay, audit, onChange, onSave }) {
   const [saved, setSaved] = useState(false);
 
   const handleSave = () => {
-    onSave(selectedDay, text);
+    onSave();
     setSaved(true);
     setTimeout(() => setSaved(false), 2000);
   };
-
-  useState(() => {
-    setText(audit || "");
-  }, [audit, selectedDay]);
 
   return (
     <motion.section
@@ -33,10 +28,10 @@ export default function NightAudit({ selectedDay, audit, onSave }) {
 
         <div className="relative">
           <textarea
-            value={text}
+            value={audit}
             onChange={(e) => {
-              setText(e.target.value);
-              setSaved(false);
+              onChange(e.target.value);
+              if(saved) setSaved(false);
             }}
             placeholder="Relatório do turno: Como as trevas cederam à sua luz?"
             rows={4}

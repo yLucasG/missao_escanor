@@ -82,14 +82,16 @@ export default function App() {
     }
   };
 
-  const handleSaveAudit = async (day, text) => {
-    const newState = {
+  const handleUpdateAudit = (day, text) => {
+    setState({
       ...state,
       audits: { ...state.audits, [day]: text },
-    };
-    setState(newState);
+    });
+  };
+
+  const handleSaveAudit = async () => {
     if (session?.user) {
-      await syncProgress(session.user.id, newState);
+      await syncProgress(session.user.id, state);
     }
   };
 
@@ -289,6 +291,7 @@ export default function App() {
               <NightAudit
                 selectedDay={selectedDay}
                 audit={state.audits[selectedDay] || ""}
+                onChange={(text) => handleUpdateAudit(selectedDay, text)}
                 onSave={handleSaveAudit}
               />
             </div>
