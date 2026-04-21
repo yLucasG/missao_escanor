@@ -105,6 +105,25 @@ export function useSupabase() {
     }
   };
 
+  const syncAudits = async (userId, currentAuditsState) => {
+    try {
+      // Faz o Upsert específico apensas das auditorias como solicitado. 
+      // Se for a primeira vez, cria o row no DB com os falsos em defalut.
+      await supabase
+        .from("user_progress")
+        .upsert(
+          {
+            user_id: userId,
+            audits: currentAuditsState,
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: "user_id" }
+        );
+    } catch (err) {
+      console.error("Erro ao sincronizar auditoria", err);
+    }
+  };
+
   return {
     session,
     loading,
@@ -113,6 +132,7 @@ export function useSupabase() {
     signUp,
     logout,
     fetchProgress,
-    syncProgress
+    syncProgress,
+    syncAudits
   };
 }

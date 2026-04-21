@@ -12,7 +12,7 @@ import { challengeDays } from "./data/challengeData";
 import { useSupabase } from "./hooks/useSupabase";
 
 export default function App() {
-  const { session, loading, login, signUp, logout, fetchProgress, syncProgress } = useSupabase();
+  const { session, loading, login, signUp, logout, fetchProgress, syncProgress, syncAudits } = useSupabase();
 
   const [state, setState] = useState({ tasks: {}, audits: {}, points: 0, currentDay: 1 });
   const [selectedDay, setSelectedDay] = useState(1);
@@ -91,7 +91,8 @@ export default function App() {
 
   const handleSaveAudit = async () => {
     if (session?.user) {
-      await syncProgress(session.user.id, state);
+      await syncAudits(session.user.id, state.audits);
+      // O estado já foi mapeado por dia internamente { [day]: text }
     }
   };
 
