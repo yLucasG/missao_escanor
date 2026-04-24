@@ -2,48 +2,54 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BookMarked, X, Crosshair, ArrowLeft, BookOpen } from 'lucide-react';
 
+import capaArte from '../assets/artedaseducao.png';
+import capaHabitos from '../assets/habitosatomicos.jpg';
+import capaConvencer from '../assets/comoconvenceralguemem90seg.png';
+import capaDiabo from '../assets/maisespertoqueodiabo.png';
+import capa48Leis from '../assets/48leisdopoder.jpg';
+import capaArmas from '../assets/armaspersuasao.png';
 
 const livrosTaticos = [
   {
     id: 1,
     titulo: 'A Arte da Sedução',
     autor: 'Robert Greene',
-    capaUrl: '',
+    capaUrl: capaArte,
     resenhaTatica: 'Um manual implacável sobre como desarmar defesas psicológicas e atrair aliados (ou vítimas). Aprenda a identificar as fraquezas emocionais do seu alvo. Use para: estratégias de networking e persuasão invisível.'
   },
   {
     id: 2,
     titulo: 'Hábitos Atômicos',
     autor: 'James Clear',
-    capaUrl: '',
+    capaUrl: capaHabitos,
     resenhaTatica: 'Como construir sistemas que garantem progresso contínuo através de pequenas melhorias marginais. A fórmula para tornar o sucesso automatizado e a falha quase impossível. Use para: engenharia de rotina.'
   },
   {
     id: 3,
     titulo: 'Como Convencer Alguém em 90 Segundos',
     autor: 'Nicholas Boothman',
-    capaUrl: '',
+    capaUrl: capaConvencer,
     resenhaTatica: 'Técnicas de PNL e leitura corporal para gerar rapport imediato. A primeira impressão decide o jogo antes mesmo dele começar. Use para: negociações rápidas e fechamentos.'
   },
   {
     id: 4,
     titulo: 'Mais Esperto que o Diabo',
     autor: 'Napoleon Hill',
-    capaUrl: '',
+    capaUrl: capaDiabo,
     resenhaTatica: 'A quebra do ritmo hipnótico da conformidade. Como o sistema cria o medo e a alienação em massa, e como escpar dessa prisão mental para pensar livremente. Use para: blindagem mental e autonomia extrema.'
   },
   {
     id: 5,
     titulo: 'As 48 Leis do Poder',
     autor: 'Robert Greene',
-    capaUrl: '',
+    capaUrl: capa48Leis,
     resenhaTatica: 'Compilado prático e denso de leis sobre dominação social. Leitura obrigatória para entender a dinâmica de poder sem ingenuidade (Ex: "Não ofusque o mestre"). Use para: leitura de cenário sociopolítico organizacional.'
   },
   {
     id: 6,
     titulo: 'As Armas da Persuasão',
     autor: 'Robert Cialdini',
-    capaUrl: '',
+    capaUrl: capaArmas,
     resenhaTatica: 'Os 6 gatilhos psicológicos automáticos da espécie humana (Reciprocidade, Escassez, etc). Como acioná-los inteligentemente e como se defender de quem os usa contra você. Use para: vendas e copy de alto impacto.'
   }
 ];
